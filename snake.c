@@ -30,7 +30,7 @@ struct Food_ {
     int x, y;
 } food;   // 代表食物所在坐标位置
 
-void clear();  // 清空屏幕
+void clear_screen();  // 清空屏幕
 
 void init();   // 初始化
 void draw();   // 将游戏场景画到cli
@@ -65,7 +65,7 @@ int main() {
                     break;
             }
         }
-        while(getchar() > 0);
+        while(getchar() > 0); // 清空输入缓冲区，以使下次采集到最新事件
     
         // 模拟下一步要发生的事情
         adjust();
@@ -179,7 +179,7 @@ void draw() {
         world[ Y[i] ][ X[i] ] = 'H';
     }
 
-    clear();
+    clear_screen();
     for (i = 0; i < HEIGHT; i++) {
         for (j = 0; j < WIDTH; j++) {
             if (world[i][j] > 0) 
@@ -191,6 +191,6 @@ void draw() {
     }
 }
 
-void clear() {
+void clear_screen() {
     printf("\033[H\033[J");
 }
