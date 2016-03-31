@@ -3,40 +3,41 @@
 #include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <time.h>
 
 #define WIDTH 80
 #define HEIGHT 40
 
-int finish = 0;
+static int finish = 0;
 // 表示世界
-int world[ HEIGHT ][ WIDTH ];  // 贪吃蛇所在的世界舞台
+static int world[ HEIGHT ][ WIDTH ];  // 贪吃蛇所在的世界舞台
 
 // 表示贪吃蛇的身体
-int L, D;  // 贪吃蛇长度，方向
-int X[ WIDTH * HEIGHT ]; // 贪吃蛇每节身体的横坐标
-int Y[ WIDTH * HEIGHT ]; // 贪吃蛇每节身体的纵坐标
+static int L, D;  // 贪吃蛇长度，方向
+static int X[ WIDTH * HEIGHT ]; // 贪吃蛇每节身体的横坐标
+static int Y[ WIDTH * HEIGHT ]; // 贪吃蛇每节身体的纵坐标
 
 // 表示贪吃蛇的方向, 上下左右
 enum direction {
     UP, RIGHT, DOWN, LEFT
 };
-char *tips[4] = {
+static const char *tips[4] = {
     "up", "right", "down", "left"
 };
-int DX[4] = {0, 1, 0, -1};
-int DY[4] = {-1, 0, 1, 0};
+static int DX[4] = {0, 1, 0, -1};
+static int DY[4] = {-1, 0, 1, 0};
 
 struct Food_ {
     int x, y;
 } food;   // 代表食物所在坐标位置
 
-void clear_screen();  // 清空屏幕
+static void clear_screen();  // 清空屏幕
 
-void init();   // 初始化
-void draw();   // 将游戏场景画到cli
+static void init();   // 初始化
+static void draw();   // 将游戏场景画到cli
 
-void random_food();  // 当食物倍吃时，随机出一块新的食物
-void adjust();  // 模拟贪吃蛇的下一步
+static void random_food();  // 当食物倍吃时，随机出一块新的食物
+static void adjust();  // 模拟贪吃蛇的下一步
 
 int main() {
     char ch;
