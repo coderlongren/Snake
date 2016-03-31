@@ -83,7 +83,7 @@ int main() {
     return EXIT_SUCCESS;
 }
 
-void init() {
+static void init() {
     int i, flags, d;
 
     // 设置stdin阻塞IO
@@ -109,7 +109,7 @@ void init() {
     random_food();
 }
 
-void random_food() {
+static void random_food() {
     int i;
     int ok = 0;
     do {
@@ -126,7 +126,7 @@ void random_food() {
     } while (!ok);
 }
 
-void adjust() {
+static void adjust() {
     int x, y, i;
     int did_knock_wall, did_knock_self;
     x = X[0] + DX[ D ];
@@ -159,7 +159,7 @@ void adjust() {
     }
 }
 
-void draw() {
+static void draw() {
     int i, j;
 
     // 初始化世界
@@ -192,6 +192,6 @@ void draw() {
     }
 }
 
-void clear_screen() {
+static void clear_screen() {
     printf("\033[H\033[J");
 }

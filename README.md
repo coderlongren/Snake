@@ -15,6 +15,19 @@ gcc -o snake snake.c
 ./snake
 ```
 
+也可以使用cmake执行外部编译
+
+```sh
+cd ~/path/to/your/workspace
+git clone git@github.com:huster-zhangpeng/Snake.git
+cd Snake
+mkdir build && cd build
+cmake ..
+make
+./snake
+
+```
+
 ## 变量说明
 
 > int world[ HEIGHT ][ WIDTH ]
